@@ -45,14 +45,6 @@ public class InventoryHandler extends Container
             }
         }
 
-        for(int i = 0; i < 3; i ++)
-        {
-            for(int j = 0; j < 2; j++)
-            {
-                addSlotToContainer(new SlotHandler(tile, id2, i * 18 + 62, j * 18 + 21)); //Adds custon slots
-                id2++;
-            }
-        }
         addSlotToContainer(new SlotHandler(tile, id2, 81, 95)); //Adds custom output
     }
 

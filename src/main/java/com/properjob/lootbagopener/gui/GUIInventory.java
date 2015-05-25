@@ -12,7 +12,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GUIInventory extends GuiContainer {
 
-    private static final ResourceLocation backgroundimage = new ResourceLocation(Reference.LOWERCASE_MOD_ID + ":" + "textures/gui/GUIProjector.png");
+    private static final ResourceLocation backgroundimage = new ResourceLocation(Reference.LOWERCASE_MOD_ID + ":" + "textures/gui/GUIOpener.png");
 
     public GUIInventory(InventoryPlayer inventoryPlayer, TileLootBagOpener tileLootBagOpener)
     {

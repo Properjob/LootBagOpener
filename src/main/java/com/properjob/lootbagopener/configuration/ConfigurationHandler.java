@@ -1,6 +1,8 @@
 package com.properjob.lootbagopener.configuration;
 
 import java.io.File;
+
+import com.properjob.lootbagopener.reference.Settings;
 import net.minecraftforge.common.config.Configuration;
 
 public class ConfigurationHandler
@@ -15,16 +17,7 @@ public class ConfigurationHandler
             configuration.load();
 
             //Read and Write Values to config file
-            //Block and items
-            /*Settings.General.enabledForceBlock = configuration.getBoolean("Enable Force Block", "General", true,"");
-            Settings.General.enabledForceField = configuration.getBoolean("Enable Force Field", "General", true,"");
-            // World generation
-            Settings.Ores.ForceOre.enabledForceOreGen = configuration.getBoolean("Enable Force Ore Gen", "World Generation", true, null);
-            Settings.Ores.ForceOre.forceOreMaxVeinSize = configuration.get("World Generation", "forceOreMaxVeinSize", 8).getInt();
-            Settings.Ores.ForceOre.forceOreMinVeinSize = configuration.get("World Generation", "forceOreMinVeinSize", 3).getInt();
-            Settings.Ores.ForceOre.forceOreMaxY = configuration.get("World Generation", "forceOreMaxY", 35).getInt();
-            Settings.Ores.ForceOre.forceOreMinY = configuration.get("World Generation", "forceOreMinY", 1).getInt();
-            Settings.Ores.ForceOre.forceOreRarity = configuration.get("World Generation", "forceOreRarity", 4).getInt();*/
+            Settings.General.enabledLootBagOpener = configuration.getBoolean("Enable Loot Bag Opener", "General", true,"");
         }
         catch (Exception e)
         {
