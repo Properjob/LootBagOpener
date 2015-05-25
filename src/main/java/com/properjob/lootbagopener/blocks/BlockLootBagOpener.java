@@ -22,9 +22,9 @@ public class BlockLootBagOpener extends BlockContainer {
 
     public BlockLootBagOpener(){
         super(Material.iron);
-        this.setBlockName("BlockLootBagOpener");
+        this.setBlockName("LootBagOpener");
         this.setCreativeTab(CreativeTab.LBO_TAB);
-        GameRegistry.registerBlock(this, "BlockLootBagOpener");
+        GameRegistry.registerBlock(this, "LootBagOpener");
         this.setHardness(8.0F);
     }
 

@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 /**
  * Created by Danny's on 25/05/2015.
@@ -33,19 +34,28 @@ public class InventoryHandler extends Container
 
         for(int i = 0; i < 9; i++)
         {
-            addSlotToContainer(new Slot(inventoryPlayer, id, i * 18 + 8, 189)); //Adds player hotbar
+            addSlotToContainer(new Slot(inventoryPlayer, id, i * 18 + 8, 190)); //Adds player hotbar
             id++;
         }
         for(int i = 0; i < 3; i++)
         {
             for(int j = 0; j < 9; j++)
             {
-                addSlotToContainer(new Slot(inventoryPlayer, id ,j * 18 + 8, i * 18 + 131 )); //Adds player inventory
+                addSlotToContainer(new Slot(inventoryPlayer, id ,j * 18 + 8, i * 18 + 132 )); //Adds player inventory
                 id++;
             }
         }
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 9; j++)
+            {
+                addSlotToContainer(new SlotHandler(tile, id2 ,j * 18 + 8, i * 18 + 73 )); //Adds custom inventory
+                id2++;
+            }
+        }
+        addSlotToContainer(new SlotHandler(tile, id2, 80, 18)); //Adds custom input
 
-        addSlotToContainer(new SlotHandler(tile, id2, 81, 95)); //Adds custom output
+
     }
 
     @Override
@@ -53,4 +63,14 @@ public class InventoryHandler extends Container
     {
         return true;
     }
+
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int slotIndex)
+    {
+        return null;
+    }
+
+
+
+
 }

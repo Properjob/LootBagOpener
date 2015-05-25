@@ -19,6 +19,7 @@ public class Recipes {
     {
         // Shaped
         //GameRegistry.addRecipe(new ItemStack(ModBlocks.blockLootBagOpener, 1), "iii", "iii", "iii", 'i', new ItemStack(Item.getItemFromBlock(Blocks.), 1));
+        System.out.println(GameRegistry.findItem("lootbags", "itemlootbag"));
 
 
     }

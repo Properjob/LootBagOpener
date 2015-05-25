@@ -1,5 +1,6 @@
 package com.properjob.lootbagopener.tileentities;
 
+import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -15,7 +16,10 @@ import net.minecraftforge.common.util.Constants;
 public class TileLootBagOpener extends TileEntity implements IInventory {
 
     private ItemStack[] inventory;
-    private int INVENTORY_SIZE = 1;
+    private int INVENTORY_SIZE = 28;
+    public int OpenTime = 2;
+    public int OpenTimeRemaining;
+    private boolean isOpening = false;
 
     public TileLootBagOpener()
     {
@@ -120,7 +124,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
     @Override
     public String getInventoryName()
     {
-        return "Projector";
+        return "Loot Bag Opener";
     }
 
 
@@ -153,11 +157,62 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
     @Override
     public void closeInventory() {
     }
-
-
     @Override
-    public boolean isItemValidForSlot(int p_94041_1_, ItemStack p_94041_2_) {
+    public boolean isItemValidForSlot(int p_94041_1_, ItemStack IS) {
+
+        return false;
+    }
+
+    public void openBag(){
+
+    }
+    public boolean canOpen(){
+
+
         return true;
     }
 
+    /*@Override
+    public void updateEntity()
+    {
+        //If on server side
+        if(!worldObj.isRemote)
+        {
+            //If the machine is already smashing
+            if(isOpening)
+            {
+                //And the te is done smashing
+                if(OpenTimeRemaining == 0)
+                {
+                    //Null pointer blocker
+                    if(inventory[0] != null)
+                    {
+                     openBag();
+                    }
+                    //done smashing, so set isSmashing to false
+                    isOpening = false;
+                    OpenTime = 2;
+                }
+                //reduce smash time
+                OpenTimeRemaining--;
+            }
+            //If not smashing, check if can smash
+            else if(canOpen()) {
+                //turn smashing on
+                isOpening = true;
+                OpenTimeRemaining = 20;
+                OpenTime = 2;
+            }
+        }
+    }*/
+
+    public int getSmashTimeRemaining()
+    {
+        return OpenTimeRemaining;
+    }
+
+    public int getSmashTime()
+    {
+        return OpenTime;
+    }
 }

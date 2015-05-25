@@ -4,6 +4,8 @@ import com.properjob.lootbagopener.inventory.InventoryHandler;
 import com.properjob.lootbagopener.reference.Reference;
 import com.properjob.lootbagopener.tileentities.TileLootBagOpener;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiFurnace;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 
@@ -12,6 +14,7 @@ import net.minecraft.util.ResourceLocation;
  */
 public class GUIInventory extends GuiContainer {
 
+    TileLootBagOpener tileLootBagOpener;
     private static final ResourceLocation backgroundimage = new ResourceLocation(Reference.LOWERCASE_MOD_ID + ":" + "textures/gui/GUIOpener.png");
 
     public GUIInventory(InventoryPlayer inventoryPlayer, TileLootBagOpener tileLootBagOpener)
@@ -22,8 +25,18 @@ public class GUIInventory extends GuiContainer {
     }
 
     @Override
+    protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_)
+    {
+        TileLootBagOpener tileLootBagOpener = new TileLootBagOpener();
+        String s = tileLootBagOpener.getInventoryName();
+        this.fontRendererObj.drawString(s, 6, 6, 4210752);
+
+    }
+
+    @Override
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
     {
+
         //Bind Texture
         this.mc.getTextureManager().bindTexture(backgroundimage);
         // set the x for the texture, Total width - textureSize / 2
