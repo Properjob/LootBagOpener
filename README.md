@@ -1,0 +1,2 @@
+# LootBagOpener
+Opens Loot Bags
