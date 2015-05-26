@@ -1,13 +1,19 @@
 package com.properjob.lootbagopener.tileentities;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.common.util.FakePlayerFactory;
+
+import java.util.UUID;
 
 /**
  * Created by Danny's on 25/05/2015.
@@ -17,6 +23,8 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
 
     private ItemStack[] inventory;
     private int INVENTORY_SIZE = 28;
+    private static final String FAKE_PLAYER_NAME = "[LBO_PLAYER]";
+    private static final UUID FAKE_PLAYER_ID = null;
     public int OpenTime = 2;
     public int OpenTimeRemaining;
     private boolean isOpening = false;
@@ -163,7 +171,9 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
         return false;
     }
 
-    public void openBag(){
+    public void openBag(ItemStack itemStack){
+
+        EntityPlayerMP player = FakePlayerFactory.get((WorldServer) worldObj, new GameProfile(FAKE_PLAYER_ID, FAKE_PLAYER_NAME));
 
     }
     public boolean canOpen(){
@@ -172,7 +182,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
         return true;
     }
 
-    /*@Override
+    @Override
     public void updateEntity()
     {
         //If on server side
@@ -187,7 +197,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
                     //Null pointer blocker
                     if(inventory[0] != null)
                     {
-                     openBag();
+                     openBag(inventory[0]);
                     }
                     //done smashing, so set isSmashing to false
                     isOpening = false;
@@ -204,7 +214,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
                 OpenTime = 2;
             }
         }
-    }*/
+    }
 
     public int getSmashTimeRemaining()
     {

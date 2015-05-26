@@ -1,7 +1,6 @@
 package com.properjob.lootbagopener.blocks;
 
 import com.properjob.lootbagopener.LootBagOpener;
-import com.properjob.lootbagopener.creativetab.CreativeTab;
 import com.properjob.lootbagopener.reference.RenderIDs;
 import com.properjob.lootbagopener.tileentities.TileLootBagOpener;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -11,7 +10,9 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
@@ -23,7 +24,7 @@ public class BlockLootBagOpener extends BlockContainer {
     public BlockLootBagOpener(){
         super(Material.iron);
         this.setBlockName("LootBagOpener");
-        this.setCreativeTab(CreativeTab.LBO_TAB);
+        this.setCreativeTab(CreativeTabs.tabDecorations);
         GameRegistry.registerBlock(this, "LootBagOpener");
         this.setHardness(8.0F);
     }

@@ -1,5 +1,6 @@
 package com.properjob.lootbagopener;
 
+import com.properjob.lootbagopener.blocks.BlockLootBagOpener;
 import com.properjob.lootbagopener.configuration.ConfigurationHandler;
 import com.properjob.lootbagopener.gui.GUIHandler;
 import com.properjob.lootbagopener.proxy.CommonProxy;
@@ -10,6 +11,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraft.block.BlockContainer;
 import org.apache.logging.log4j.Logger;
 
 
@@ -28,6 +30,7 @@ public class LootBagOpener {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
+        BlockContainer LootBagOpenerBlock = new BlockLootBagOpener();
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         proxy.registerTileEntities();
         proxy.registerRendering();
