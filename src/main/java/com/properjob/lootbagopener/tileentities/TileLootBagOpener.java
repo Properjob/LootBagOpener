@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityHopper;
 import net.minecraft.world.WorldServer;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.common.util.FakePlayerFactory;
@@ -175,13 +174,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
     public void openBag(ItemStack itemStack){
 
         EntityPlayerMP player = FakePlayerFactory.get((WorldServer) worldObj, new GameProfile(FAKE_PLAYER_ID, FAKE_PLAYER_NAME));
-        player.inventory.clearInventory(null, -1);
-        player.inventory.currentItem = 0;
-        player.inventory.setInventorySlotContents(0, itemStack);
-        ItemStack bag = itemStack.useItemRightClick(worldObj, player);
-        player.inventory.setInventorySlotContents(0, null);
-        setInventorySlotContents(0, bag);
-        decrStackSize(27, 1);
+
     }
     public boolean canOpen(){
 
@@ -195,20 +188,16 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
         //If on server side
         if(!worldObj.isRemote)
         {
-            System.out.println("Not Remote");
             //If the machine is already smashing
             if(isOpening)
             {
-                System.out.println("Open");
                 //And the te is done smashing
                 if(OpenTimeRemaining == 0)
                 {
-                    System.out.println("Open time");
                     //Null pointer blocker
-                    if(inventory[27] != null)
+                    if(inventory[0] != null)
                     {
-                        System.out.println("Opening");
-                        openBag(inventory[27]);
+                     openBag(inventory[0]);
                     }
                     //done smashing, so set isSmashing to false
                     isOpening = false;
@@ -221,7 +210,7 @@ public class TileLootBagOpener extends TileEntity implements IInventory {
             else if(canOpen()) {
                 //turn smashing on
                 isOpening = true;
-                OpenTimeRemaining = 2;
+                OpenTimeRemaining = 20;
                 OpenTime = 2;
             }
         }

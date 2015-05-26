@@ -36,6 +36,12 @@ public class BlockLootBagOpener extends BlockContainer {
     }
 
     @Override
+    public int getRenderType()
+    {
+        return RenderIDs.tileLootBagOpener;
+    }
+
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
