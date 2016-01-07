@@ -1,8 +1,9 @@
 package com.properjob.lootbagopener;
 
-import com.properjob.lootbagopener.blocks.BlockLootBagOpener;
+import com.properjob.lootbagopener.commands.getPlayerInv;
 import com.properjob.lootbagopener.configuration.ConfigurationHandler;
 import com.properjob.lootbagopener.gui.GUIHandler;
+import com.properjob.lootbagopener.init.ModBlocks;
 import com.properjob.lootbagopener.proxy.CommonProxy;
 import com.properjob.lootbagopener.init.Recipes;
 import com.properjob.lootbagopener.reference.Reference;
@@ -10,14 +11,11 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import net.minecraft.block.BlockContainer;
 import org.apache.logging.log4j.Logger;
+import net.minecraft.client.gui.achievement.GuiAchievement;
 
-
-/**
- * Created by Danny's on 25/05/2015.
- */
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, dependencies = "after:lootbags")
 public class LootBagOpener {
 
@@ -30,7 +28,6 @@ public class LootBagOpener {
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        BlockContainer LootBagOpenerBlock = new BlockLootBagOpener();
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
         proxy.registerTileEntities();
         proxy.registerRendering();
@@ -38,8 +35,14 @@ public class LootBagOpener {
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
+        ModBlocks.init();
         Recipes.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
+    }
+    @Mod.EventHandler
+    public void registerCommands(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new getPlayerInv());
     }
 
 

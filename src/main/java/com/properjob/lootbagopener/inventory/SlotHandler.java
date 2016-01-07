@@ -1,5 +1,6 @@
 package com.properjob.lootbagopener.inventory;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -17,8 +18,9 @@ public class SlotHandler extends Slot {
     @Override
     public boolean isItemValid(ItemStack par1ItemStack)
     {
-        System.out.println(par1ItemStack.getUnlocalizedName());
-        return par1ItemStack.getUnlocalizedName() == "lootbags:itemlootbag";
+        /*System.out.println(par1ItemStack.getUnlocalizedName());
+        return par1ItemStack.getUnlocalizedName() == "item.lootbag.common";*/
+        return true;
     }
 }
 

@@ -1,6 +1,7 @@
 package com.properjob.lootbagopener.blocks;
 
 import com.properjob.lootbagopener.LootBagOpener;
+import com.properjob.lootbagopener.reference.Reference;
 import com.properjob.lootbagopener.reference.RenderIDs;
 import com.properjob.lootbagopener.tileentities.TileLootBagOpener;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,7 +39,7 @@ public class BlockLootBagOpener extends BlockContainer {
     @Override
     public int getRenderType()
     {
-        return RenderIDs.tileLootBagOpener;
+        return -1;
     }
 
     @Override
@@ -66,12 +67,22 @@ public class BlockLootBagOpener extends BlockContainer {
         return true;
     }
 
-	@Override
+    @Override
+    public String getUnlocalizedName()
+    {
+        return String.format("tile.%s%s", Reference.LOWERCASE_MOD_ID + ":", getUnwrappedUnlocalizedName(super.getUnlocalizedName()));
+    }
+
+    @Override
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        String unlocalizedName = this.getUnlocalizedName();
-		this.blockIcon = iconRegister.registerIcon(unlocalizedName.substring(unlocalizedName.indexOf(".") + 1));
+        blockIcon = iconRegister.registerIcon(String.format("%s", getUnwrappedUnlocalizedName(this.getUnlocalizedName())));
+    }
+
+    protected String getUnwrappedUnlocalizedName(String unlocalizedName)
+    {
+        return unlocalizedName.substring(unlocalizedName.indexOf(".") + 1);
     }
 
     @Override

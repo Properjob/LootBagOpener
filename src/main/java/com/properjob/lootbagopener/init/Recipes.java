@@ -1,5 +1,6 @@
 package com.properjob.lootbagopener.init;
 
+import com.properjob.lootbagopener.blocks.BlockLootBagOpener;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -16,12 +17,10 @@ public class Recipes {
     }
 
     private static void initModRecipes()
+
     {
         // Shaped
-        //GameRegistry.addRecipe(new ItemStack(ModBlocks.blockLootBagOpener, 1), "iii", "iii", "iii", 'i', new ItemStack(Item.getItemFromBlock(Blocks.), 1));
-        System.out.println(GameRegistry.findItem("lootbags", "itemlootbag"));
-
-
+        GameRegistry.addRecipe(new ItemStack(ModBlocks.LOOT_BAG_OPENER, 1), "ihi", "p p", "ihi", 'i', new ItemStack(Item.getItemFromBlock(Blocks.stone), 1), 'h', new ItemStack(Item.getItemFromBlock(Blocks.hopper)), 'p', new ItemStack(Item.getItemFromBlock(Blocks.sticky_piston)));
     }
 
 }
