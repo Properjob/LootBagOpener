@@ -4,6 +4,7 @@ import com.properjob.lootbagopener.commands.getPlayerInv;
 import com.properjob.lootbagopener.configuration.ConfigurationHandler;
 import com.properjob.lootbagopener.gui.GUIHandler;
 import com.properjob.lootbagopener.init.ModBlocks;
+import com.properjob.lootbagopener.init.ModItems;
 import com.properjob.lootbagopener.proxy.CommonProxy;
 import com.properjob.lootbagopener.init.Recipes;
 import com.properjob.lootbagopener.reference.Reference;
@@ -36,6 +37,7 @@ public class LootBagOpener {
     public void init(FMLInitializationEvent event)
     {
         ModBlocks.init();
+        ModItems.init();
         Recipes.init();
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GUIHandler());
     }

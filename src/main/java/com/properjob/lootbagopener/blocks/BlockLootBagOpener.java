@@ -63,7 +63,7 @@ public class BlockLootBagOpener extends BlockContainer {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer entityPlayer, int par1, float par2, float par3, float par4)
     {
-        entityPlayer.openGui(LootBagOpener.instance, 0, world, x ,y, z);
+        entityPlayer.openGui(LootBagOpener.instance, RenderIDs.tileLootBagOpener, world, x ,y, z);
         return true;
     }
 
